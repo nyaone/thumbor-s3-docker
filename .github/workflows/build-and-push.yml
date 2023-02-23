@@ -57,10 +57,10 @@ jobs:
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_INFO=${{ env.BUILD_INFO }}
           tags: |
-            nyaone/thumbor-s3:latest
-            nyaone/thumbor-s3:${{ matrix.baseDist }}
-            nyaone/thumbor-s3:${{ matrix.versionMinor }}-${{ matrix.baseDist }}
-            nyaone/thumbor-s3:${{ matrix.versionMajor }}-${{ matrix.baseDist }}
+            nyaone/thumbor:latest
+            nyaone/thumbor:${{ matrix.baseDist }}
+            nyaone/thumbor:${{ matrix.versionMinor }}-${{ matrix.baseDist }}
+            nyaone/thumbor:${{ matrix.versionMajor }}-${{ matrix.baseDist }}
           pull: true
           push: true
 
