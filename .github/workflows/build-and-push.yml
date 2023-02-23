@@ -63,3 +63,7 @@ jobs:
             nyaone/thumbor-s3:${{ matrix.versionMajor }}-${{ matrix.baseDist }}
           pull: true
           push: true
+
+      - name: Send success webhook
+        run: curl ${{ secrets.DOCKER_BUILD_SUCCESS_WEBHOOK }}?subject=thumbor%20%E9%95%9C%E5%83%8F
+
