@@ -1,8 +1,8 @@
 # docker build -t thumbor-alpine --build-arg BUILDKIT_INLINE_CACHE=1 -f ./docker/thumbor-7.4/Dockerfile-alpine . && docker run --rm -it thumbor-alpine
 # Full-featured Thumbor docker image
-FROM python:3.10-alpine
+FROM python:3.11-alpine
 
-LABEL org.opencontainers.image.source=https://github.com/beeyev/thumbor-s3-docker
+LABEL org.opencontainers.image.source=https://github.com/nyaone/thumbor-s3-docker
 
 ENV TERM="xterm-256color" \
 LANGUAGE="en_US.UTF-8" \
@@ -62,6 +62,9 @@ RUN set -eux \
     && apk add --quiet --no-cache --virtual .build-deps-py3exiv2 exiv2-dev build-base \
     && pip install --quiet --no-cache-dir py3exiv2==0.11.* \
     && apk del .build-deps-py3exiv2 \
+    #
+    ## pillow_heif is required for working with HEIF files
+    && pip install --quiet --no-cache-dir pillow_heif \
     #
     # Cleanup
     && apk del .build-deps
